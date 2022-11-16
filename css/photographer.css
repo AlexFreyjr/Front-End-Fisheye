@@ -154,7 +154,7 @@ main {
 }
 
 .card img {
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
   height: 70%;
   border-radius: 5px;
@@ -175,6 +175,7 @@ main {
 
 .card_description .like svg {
   margin-left: 6px;
+  cursor: pointer;
 }
 
 /*fees*/

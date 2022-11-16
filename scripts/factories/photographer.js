@@ -1,5 +1,6 @@
 function photographerFactory(data) {
     //catch data
+    console.log(data);
     const { name, portrait, city, country, tagline, price} = data;
     //structure data for use in html
     const picture = `assets/photographers/${portrait}`;
