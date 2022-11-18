@@ -1,7 +1,6 @@
 function mediaFactory(data, name) {
     //catch data
     const { date, id, image, likes, price, title } = data;
-    console.log(data);
     //structure data for use in html
     const picture = `assets/images/Photos/${name}/${image}`;
 
