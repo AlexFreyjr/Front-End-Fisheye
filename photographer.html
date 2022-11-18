@@ -14,15 +14,7 @@
     <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
   </header>
   <main id="main">
-    <div class="photograph-header">
-      <div class="description">
-        <h2>Mimi Keel</h2>
-        <div class="location"> London,UK</div>
-        <div class="blorb"> Voir le beau dans le quotidien</div>
-      </div>
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      <img src="./assets/photographers/MimiKeel.jpg" alt=" ">
-    </div>
+    <div class="photograph-header"></div>
     <div id="sorting">
       <div>Trier par</div>
       <div class="dropdown">
@@ -34,107 +26,13 @@
           </svg>
         </button>
         <div class="submenu" aria-label="submenu">
+          <a href="#">Popularité</a>
           <a href="#">Data</a>
           <a href="#">Titre</a>
         </div>
       </div>
     </div>
-    <section id="card-grid">
-      <div class="card">
-        <button class="lightbox_link" onclick="displayLightbox()"><img src="./assets/images/Photos/Mimi/Animals_Rainbow.jpg"
-            alt=" " /></button>
-        <div class="card_description">
-          <p>Arc-en-Ciel</p>
-          <div class="like">
-            <div class="likeNbr">11</div>
-              <svg width="18" height="17" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z"
-                fill="#911C1C" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="./assets/images/Photos/Mimi/Animals_Rainbow.jpg" alt=" " />
-        <div class="card_description">
-          <p>Solitude</p>
-          <div class="left-column">
-            <div class="like">
-              <div class="likeNbr">11</div>
-              <svg class="heart" width="18" height="17" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z"
-                  fill="#911C1C" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="./assets/images/Photos/Mimi/Event_BenevidesWedding.jpg" alt=" " />
-        <div class="card_description">
-          <p>Mariage à la mer</p>
-          <div class="left-column">
-            <div class="like">
-              <div class="likeNbr">11</div>
-              <svg class="heart" width="18" height="17" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z"
-                  fill="#911C1C" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="./assets/images/Photos/Mimi/Event_PintoWedding.jpg" alt=" " />
-        <div class="card_description">
-          <p>Arc-en-Ciel</p>
-          <div class="left-column">
-            <div class="like">
-              <div class="likeNbr">11</div>
-              <svg class="heart" width="18" height="17" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z"
-                  fill="#911C1C" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="./assets/images/Photos/Mimi/Event_SeasideWedding.jpg" alt=" " />
-        <div class="card_description">
-          <p>Arc-en-Ciel</p>
-          <div class="left-column">
-            <div class="like">
-              <div class="likeNbr">11</div>
-              <svg class="heart" width="18" height="17" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z"
-                  fill="#911C1C" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="./assets/images/Photos/Mimi/Animals_Wild_Horses_in_the_mountains.mp4" alt=" " />
-        <div class="card_description">
-          <p>Arc-en-Ciel</p>
-          <div class="left-column">
-            <div class="like">
-              <div class="likeNbr">11</div>
-              <svg class="heart" width="18" height="17" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z"
-                  fill="#911C1C" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="media_section">
       <div id="lightbox">
         <div class="img_viewer">
           <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="fermer" class="close" />
@@ -181,6 +79,8 @@
     </div>
   </div>
   <script src="/scripts/pages/photographer.js"></script>
+  <script src="scripts/factories/header-photographer.js"></script>
+  <script src="scripts/factories/media.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
 

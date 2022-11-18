@@ -1,3 +1,8 @@
+#main{
+  max-width: 1240px;
+  margin:auto;
+  padding: 0 100px;
+}
 #contact_modal {
   display: none;
   position: fixed;
@@ -9,12 +14,6 @@
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
 }
-
-main {
-  max-width: 1240px;
-  margin: 0 100px;
-}
-
 /*header*/
 
 .photograph-header {
@@ -26,6 +25,9 @@ main {
   align-items: center;
   border-radius: 5px;
   padding: 0px 50px;
+}
+.photograph-header button{
+  order:2;
 }
 
 .photograph-header h2 {
@@ -40,12 +42,14 @@ main {
   border: white;
   border-radius: 50%;
   object-fit: cover;
+  order: 3;
 }
 
 .photograph-header .description {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  order: 1;
 }
 
 .photograph-header .location {
@@ -53,7 +57,7 @@ main {
   font-size: 24px;
 }
 
-.photograph-header .blorb {
+.photograph-header .tagline {
   margin-top: 20px;
   font-size: 18px;
 }
@@ -115,10 +119,6 @@ main {
   margin-left: 26px;
 }
 
-.dropbtn:hover {
-  border-radius: 5px 5px 0 0;
-}
-
 .dropbtn:hover svg {
   transform: rotate(180);
   transition: all ease-in-out 1s;
@@ -129,8 +129,9 @@ main {
   position: absolute;
   background-color: #901c1c;
   min-width: 170px;
+  top: 0;
   z-index: 1;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
 }
 
 .submenu a {
@@ -139,10 +140,15 @@ main {
   color: white;
   padding: 20px 20px;
 }
+.submenu a::after {
+  background-color: white;
+  height: 1px;
+
+}
 
 /*grid*/
 
-#card-grid {
+.media_section {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -154,9 +160,9 @@ main {
 }
 
 .card img {
-  object-fit: contain;
-  width: 100%;
-  height: 70%;
+  object-fit: cover;
+  width: 350px;
+  height: 300px;
   border-radius: 5px;
 }
 
@@ -165,6 +171,7 @@ main {
   justify-content: space-between;
   align-items: center;
   font-size: 24px;
+  width: 350px;
 }
 
 .card_description .like {
@@ -173,7 +180,9 @@ main {
   align-items: center;
 }
 
-.card_description .like svg {
+.card_description .like img {
+  width: 18px;
+  height: 17px;
   margin-left: 6px;
   cursor: pointer;
 }
@@ -182,7 +191,7 @@ main {
 
 .fees-fixed {
   position: fixed;
-  left: 68%;
+  left: 75%;
   bottom: -2%;
   font-size: 24px;
   background: #db8876;
@@ -208,8 +217,7 @@ main {
 
 /*lightbox*/
 .lightbox_link {
-  background-color: white;
-  border: none;
+  color: #901c1c;
 }
 
 #lightbox {

@@ -33,21 +33,24 @@ h1 {
     margin-top: 100px;
 }
 
-.photographer_section article {
-    justify-self: center;
+
+.photographer_section article a{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
-.photographer_section article h2 {
+.photographer_section article a h2 {
     color: #D3573C;
     font-size: 36px;
     margin-bottom: 0px;;
 }
 
-.photographer_section article img {
+.photographer_section article a img {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid white;
     height: 200px;
     width: 200px;
 }
@@ -59,11 +62,14 @@ h1 {
 }
 .photographer_section .location{
     color: #901C1C;
+    padding-top: 5px;
 }
-.photographer_section .blorb{
+.photographer_section .tagline{
     font-size: 10px;
+    padding-top: 5px;
 }
 .photographer_section .fees{
     color: #757575;
     font-size: 9px;
+    padding-top: 5px;
 }

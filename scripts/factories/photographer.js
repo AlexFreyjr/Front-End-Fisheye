@@ -1,11 +1,9 @@
 function photographerFactory(data) {
     //catch data
-    console.log(data);
-    const { name, portrait, city, country, tagline, price} = data;
+    const { id, name, portrait, city, country, tagline, price} = data;
     //structure data for use in html
     const picture = `assets/photographers/${portrait}`;
     const location = `${city}, ${country}`;
-    const blorb = tagline;
     const fees = `${price}€/jour`;
 
     function getUserCardDOM() {
@@ -16,7 +14,7 @@ function photographerFactory(data) {
         img.setAttribute("alt"," ");
         //link
         const a = document.createElement('a');
-        a.setAttribute("href","./photographer.html");
+        a.setAttribute("href", "./photographer.html" + `?id=${id}`);
         //title
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
@@ -27,10 +25,10 @@ function photographerFactory(data) {
         const divLocation = document.createElement('div');
         divLocation.setAttribute("class","city");
         divLocation.textContent = location;       
-        //blorb
-        const divBlorb = document.createElement('div');
-        divBlorb.setAttribute("class","blorb");
-        divBlorb.textContent = blorb; 
+        //tagline
+        const divTagline = document.createElement('div');
+        divTagline.setAttribute("class","tagline");
+        divTagline.textContent = tagline; 
         //fees
         const divFees = document.createElement('div');
         divFees.setAttribute("class","fees");
@@ -42,9 +40,9 @@ function photographerFactory(data) {
         a.appendChild(h2);
         a.appendChild(divDescription);
         divDescription.appendChild(divLocation);
-        divDescription.appendChild(divBlorb);
+        divDescription.appendChild(divTagline);
         divDescription.appendChild(divFees);
         return (article);
     }
-    return { name, picture, location, blorb, fees, getUserCardDOM }
+    return { name, picture, location, tagline, fees, getUserCardDOM }
 }
