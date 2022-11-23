@@ -10,7 +10,7 @@ function mediaFactory(data, name) {
         //link
         const a = document.createElement('a');
         a.setAttribute("class","lightbox_link");
-        a.setAttribute("onclick","displayLightbox()");
+        a.setAttribute("onclick","openLightbox()");
         a.setAttribute("href", "#");
         //image
         const img = document.createElement( 'img' );

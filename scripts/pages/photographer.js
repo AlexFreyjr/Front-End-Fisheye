@@ -38,30 +38,35 @@ async function displayPhotographersaData(photographer) {
 //call the factory to display photos of the photographer
 async function displayMediaData(media,photographer) {
   const mediaSection = document.querySelector(".media_section");
-  const addTotalLikes = document.querySelector(".totalLikes");
   const likes = [];
   const date = [];
   const title = [];
-  let totalLikes = 0;
   photographer = photographer[0].name;
   photographer = photographer.split(' ');
   media.forEach((media) => {
     const mediaModel = mediaFactory(media,photographer[0]);
-    const userCardDOM = mediaModel.getMediaCardDOM();
-    mediaSection.appendChild(userCardDOM);
+    const mediaCardDOM = mediaModel.getMediaCardDOM();
+    mediaSection.appendChild(mediaCardDOM);
     likes.push(mediaModel.likes);
     date.push(mediaModel.date);
     title.push(mediaModel.title);
   });
-  likes.forEach(i =>{ totalLikes += i});
-  //addTotalLikes.innertText(totalLikes.toString());
+  likesTotal(likes);
+}
+
+function likesTotal(array){
+  const addTotalLikes = document.querySelector(".totalLikes");
+  console.log(array);
+  let totalLikes = 0;
+  array.forEach(i =>{ totalLikes += i});
+  addTotalLikes.textContent(totalLikes);
 }
 //sorting functions
 //listen for change to the submenu
 //then call a sorting functions that use .sort to order photos
 
 //lightbox functions
-function displayLightbox() {
+function openLightbox() {
   const lightbox = document.querySelector("#lightbox");
   lightbox.style.display = "block";
 }
@@ -72,3 +77,4 @@ function closeLightbox() {
 }
 
 getPhotographersId();
+ 

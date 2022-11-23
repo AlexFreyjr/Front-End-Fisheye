@@ -220,7 +220,6 @@
 .lightbox_link {
   color: #901c1c;
 }
-
 #lightbox {
   display: none;
   position: fixed;
@@ -232,26 +231,26 @@
   overflow: auto;
   background-color: white;
 }
+.close {
+  width: 42px;
+  height: 42px;
+  align-self: flex-start;
+  margin-top: 40px;
+  cursor: pointer;
+}
 
 .img_viewer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-}
-
-.img_viewer .close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: #901C1C;
+  padding-top: 20px;
 }
 
 .img_viewer .viewer_left,
 .img_viewer .viewer_right {
-  padding: 0 20px;
-  width: 20px;
-  height: 20px;
+  padding: 0 40px;
+  width: 30px;
+  height: 48px;
 }
 
 .img_viewer #lightbox_photo {
@@ -259,7 +258,15 @@
   width: 920px;
   height: 1050px;
 }
+.img_viewer .img_container{
+  margin-top: 40px;
+}
 
+.img_viewer .img_container .img_description{
+  color: #901c1c;
+  font-size: 24px;
+  margin-top: 20px;
+}
 /*modal*/
 
 .modal {

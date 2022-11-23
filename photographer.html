@@ -35,12 +35,14 @@
     <section class="media_section">
       <article id="lightbox">
         <div class="img_viewer" aria-labelledby="lightbox">
-          <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="fermer" class="close" />
           <img class="viewer_left" src="./assets/icons/left.svg" alt="gauche" />
-          <img id="lightbox_photo" src="./assets/images/Photos/Mimi/Animals_Rainbow.jpg" alt=" " />
+          <div class="img_container">
+            <img id="lightbox_photo" src="./assets/images/Photos/Mimi/Animals_Rainbow.jpg" alt=" " />
+            <div class="img_description">description</div>
+          </div>
           <img class="viewer_right" src="./assets/icons/right.svg" alt="droite" />
+          <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="fermer" class="close" />
         </div>
-        <div class="img_description">description</div>
       </article>
       <article class="fees-fixed">
         <div class="inner">
@@ -61,7 +63,7 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" alt="close"/>
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="close" />
       </header>
       <form class="form">
         <div aria-labelledby="form" role="form">
