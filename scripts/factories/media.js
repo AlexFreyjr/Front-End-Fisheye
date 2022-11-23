@@ -1,21 +1,30 @@
 function mediaFactory(data, name) {
     //catch data
-    const { date, id, image, likes, price, title } = data;
+    const { image, video, likes, title } = data;
     //structure data for use in html
     const picture = `assets/images/Photos/${name}/${image}`;
+    const videoImg = `assets/images/Photos/${name}/${video}`;
 
-    function getMediaCardDOM() {
+    function getMediaCardDOM(index) {
         const article = document.createElement( 'article' );
         article.setAttribute("class","card");
         //link
         const a = document.createElement('a');
         a.setAttribute("class","lightbox_link");
-        a.setAttribute("onclick","openLightbox()");
+        a.setAttribute("onclick",`openLightbox(${index})`);
         a.setAttribute("href", "#");
         //image
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
-        img.setAttribute("alt"," ");
+        let imageOrVideo;
+        if(video){
+            imageOrVideo = document.createElement( 'video' );
+            imageOrVideo.setAttribute("src", videoImg);
+            imageOrVideo.setAttribute("alt"," ");
+        }
+        else {
+            imageOrVideo = document.createElement( 'img' );
+            imageOrVideo.setAttribute("src", picture);
+            imageOrVideo.setAttribute("alt"," ");
+        }
         //description
         const divDescription = document.createElement('div');
         divDescription.setAttribute("class","card_description");
@@ -28,22 +37,23 @@ function mediaFactory(data, name) {
         //like number
         const divLikeNbr = document.createElement('div');
         divLikeNbr.setAttribute("class","likeNbr");
-        divLikeNbr.textContent = likes;    
+        divLikeNbr.textContent = likes;   
         //heart
         const heart = document.createElement('img');
         heart.setAttribute("src","./assets/icons/heart.svg");
-        heart.setAttribute("alt","likes");
+        heart.setAttribute("class","heart");
+        heart.setAttribute("alt","");
 
-        
         //article structure
         article.appendChild(a);
-        a.appendChild(img);
-        a.appendChild(divDescription);
+        a.appendChild(imageOrVideo);
+        article.appendChild(divDescription);
         divDescription.appendChild(p);
         divDescription.appendChild(divLike);
         divLike.appendChild(divLikeNbr);
         divLike.appendChild(heart);
+
         return (article);
     }
-    return { date, id, picture, likes, price, title, getMediaCardDOM }
+    return { getMediaCardDOM }
 }

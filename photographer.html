@@ -26,24 +26,14 @@
           </svg>
         </button>
         <div class="submenu" aria-label="submenu">
-          <a href="#" class="sorting" name="popularité">Popularité</a>
-          <a href="#" class="sorting" name="Date">Date</a>
-          <a href="#" class="sorting" name="Titre">Titre</a>
+          <div class="sorting" onclick="sortBy()" name="popularity">Popularité</div>
+          <div class="sorting" onclick="sortBy(date)" name="date">Date</div>
+          <div class="sorting" onclick="sortBy(title)" name="title">Titre</div>
         </div>
       </div>
     </div>
     <section class="media_section">
-      <article id="lightbox">
-        <div class="img_viewer" aria-labelledby="lightbox">
-          <img class="viewer_left" src="./assets/icons/left.svg" alt="gauche" />
-          <div class="img_container">
-            <img id="lightbox_photo" src="./assets/images/Photos/Mimi/Animals_Rainbow.jpg" alt=" " />
-            <div class="img_description">description</div>
-          </div>
-          <img class="viewer_right" src="./assets/icons/right.svg" alt="droite" />
-          <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="fermer" class="close" />
-        </div>
-      </article>
+      <article id="lightbox"></article>
       <article class="fees-fixed">
         <div class="inner">
           <div class="left">
@@ -80,10 +70,11 @@
       </form>
     </div>
   </div>
-  <script src="/scripts/pages/photographer.js"></script>
-  <script src="scripts/factories/header-photographer.js"></script>
-  <script src="scripts/factories/media.js"></script>
-  <script src="/scripts/utils/contactForm.js"></script>
+  <script src="./scripts/pages/photographer.js"></script>
+  <script src="./scripts/factories/header-photographer.js"></script>
+  <script src="./scripts/factories/media.js"></script>
+  <script src="./scripts/factories/lightbox.js"></script>
+  <script src="./scripts/utils/contactForm.js"></script>
 </body>
 
 </html>
