@@ -8,8 +8,8 @@ function headerFactory(data) {
 
     function getheaderCardDOM() {
         //description
-        const divDescription = document.createElement('div');
-        divDescription.setAttribute("class","description");
+        const article = document.createElement('article');
+        article.setAttribute("class","description");
         //title
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
@@ -32,13 +32,13 @@ function headerFactory(data) {
         img.setAttribute("alt"," ");
         
         //article structure
-        document.querySelector(".photograph-header").appendChild(divDescription);
-        divDescription.appendChild(h2);
-        divDescription.appendChild(divLocation);
-        divDescription.appendChild(divTagline);
+        document.querySelector(".photograph-header").appendChild(article);
+        article.appendChild(h2);
+        article.appendChild(divLocation);
+        article.appendChild(divTagline);
         document.querySelector(".photograph-header").appendChild(btn);
         document.querySelector(".photograph-header").appendChild(img);
-        return (divDescription);
+        return (article);
     }
     return { name, picture, location, tagline, fees, getheaderCardDOM }
 }

@@ -33,7 +33,6 @@ h1 {
     margin-top: 100px;
 }
 
-
 .photographer_section article a{
     display: flex;
     flex-direction: column;
@@ -54,21 +53,22 @@ h1 {
     height: 200px;
     width: 200px;
 }
-.photographer_section .description {
+.photographer_section article .description {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.photographer_section .location{
+.photographer_section article .description .location{
     color: #901C1C;
     padding-top: 5px;
 }
-.photographer_section .tagline{
+.photographer_section article .description .tagline{
     font-size: 10px;
     padding-top: 5px;
+    color: #901C1C;
 }
-.photographer_section .fees{
+.photographer_section article .description .fees{
     color: #757575;
     font-size: 9px;
     padding-top: 5px;

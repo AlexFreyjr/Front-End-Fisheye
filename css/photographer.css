@@ -85,7 +85,6 @@
 #sorting {
   display: flex;
   max-width: 40%;
-  justify-content: space-between;
   align-items: center;
   margin: 20px 0;
   font-size: 18px;
@@ -96,6 +95,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-left: 20px;
 }
 
 .dropdown:hover .submenu {
@@ -138,13 +138,14 @@
   display: block;
   text-decoration: none;
   color: white;
-  padding: 20px 20px;
+  margin: 0 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid white;
 }
-.submenu a::after {
-  background-color: white;
-  height: 1px;
+.submenu a:last-child{
+  border-bottom: none;
+}
 
-}
 
 /*grid*/
 
@@ -192,7 +193,7 @@
 .fees-fixed {
   position: fixed;
   left: 75%;
-  bottom: -2%;
+  bottom: 10%;
   font-size: 24px;
   background: #db8876;
   border-radius: 5px;

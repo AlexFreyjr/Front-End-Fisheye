@@ -45,5 +45,5 @@ function mediaFactory(data, name) {
         divLike.appendChild(heart);
         return (article);
     }
-    return { date, id, picture, likes, price, getMediaCardDOM }
+    return { date, id, picture, likes, price, title, getMediaCardDOM }
 }

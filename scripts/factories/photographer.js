@@ -23,7 +23,7 @@ function photographerFactory(data) {
         divDescription.setAttribute("class","description");
         //city
         const divLocation = document.createElement('div');
-        divLocation.setAttribute("class","city");
+        divLocation.setAttribute("class","location");
         divLocation.textContent = location;       
         //tagline
         const divTagline = document.createElement('div');

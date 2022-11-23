@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -11,14 +11,14 @@
 
 <body>
   <header>
-    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
+    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="logo" /></a>
   </header>
   <main id="main">
-    <div class="photograph-header"></div>
-    <div id="sorting">
+    <section class="photograph-header"></section>
+    <div id="sorting" aria-label="filter menu" role="filter">
       <div>Trier par</div>
       <div class="dropdown">
-        <button class="dropbtn">
+        <button class="dropbtn" role="button" aria-haspopup="listbox" aria-expanded="false">
           Popularité
           <svg class="arrow" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14.12 0.453125L8 6.55979L1.88 0.453125L0 2.33312L8 10.3331L16 2.33312L14.12 0.453125Z"
@@ -26,27 +26,27 @@
           </svg>
         </button>
         <div class="submenu" aria-label="submenu">
-          <a href="#">Popularité</a>
-          <a href="#">Data</a>
-          <a href="#">Titre</a>
+          <a href="#" class="sorting" name="popularité">Popularité</a>
+          <a href="#" class="sorting" name="Date">Date</a>
+          <a href="#" class="sorting" name="Titre">Titre</a>
         </div>
       </div>
     </div>
     <section class="media_section">
-      <div id="lightbox">
-        <div class="img_viewer">
+      <article id="lightbox">
+        <div class="img_viewer" aria-labelledby="lightbox">
           <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="fermer" class="close" />
           <img class="viewer_left" src="./assets/icons/left.svg" alt="gauche" />
           <img id="lightbox_photo" src="./assets/images/Photos/Mimi/Animals_Rainbow.jpg" alt=" " />
           <img class="viewer_right" src="./assets/icons/right.svg" alt="droite" />
         </div>
         <div class="img_description">description</div>
-      </div>
-      <div class="fees-fixed">
+      </article>
+      <article class="fees-fixed">
         <div class="inner">
           <div class="left">
             <div class="totalLikes"></div>
-            <svg width="18" height="17" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg role="img" width="18" height="17" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M9.125 18.35L7.85625 17.03C3.35 12.36 0.375 9.28 0.375 5.5C0.375 2.42 2.4925 0 5.1875 0C6.71 0 8.17125 0.81 9.125 2.09C10.0787 0.81 11.54 0 13.0625 0C15.7575 0 17.875 2.42 17.875 5.5C17.875 9.28 14.9 12.36 10.3938 17.04L9.125 18.35Z"
                 fill="black" />
@@ -54,24 +54,24 @@
           </div>
           <div class="right"></div>
         </div>
-      </div>
+      </article>
     </section>
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal" aria-label="modal" role="form">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="close"/>
       </header>
       <form class="form">
-        <div>
-          <label>Prénom</label>
-          <input type="text" alt="prénom" name="prenom" />
-          <label>Nom</label>
-          <input type="text" alt="Nom de famille" name="nom" />
-          <label>E-mail</label>
-          <input type="email" alt="email" name="mail" />
-          <label>Votre message</label>
+        <div aria-labelledby="form" role="form">
+          <label for="Prenom">Prénom</label>
+          <input id="first" type="text" name="prenom" />
+          <label for="nom">Nom</label>
+          <input id="name" type="text" name="nom" />
+          <label for="email">E-mail</label>
+          <input id="mail" type="email" name="mail" />
+          <label for="message">Votre message</label>
           <textarea id="message" name="message" rows="20" cols="61"></textarea>
         </div>
         <button class="contact_button" type="submit" onclick="validate()">Envoyer</button>
