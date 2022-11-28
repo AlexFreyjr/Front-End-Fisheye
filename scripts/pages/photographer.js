@@ -55,6 +55,7 @@ async function displayMediaData(media,photographer) {
   document.querySelector(".totalLikes").textContent = totalLikes;
   //document.querySelector(".likeNbr").textContent = addLike(likes,index);
 }
+
 // function addLike(likes,index){
 //   let result;
 //   document.querySelector(".heart").addEventListener((e) => {
@@ -62,23 +63,31 @@ async function displayMediaData(media,photographer) {
 //   });
 //   return(result)
 // }
+
+
 //sorting
 function sortBy(type){
-  console.log("sort");
+  console.log(type);
+  //get the data from the browser
   const media = JSON.parse(localStorage.getItem("medias"));
   const photographer = localStorage.getItem("photographer");
   const mediaSection = document.querySelector(".media_section");
+  let mediaSorted;
+  //wipe all the HTML
   mediaSection.innerHTML = "";
+  //sort by type
   if (type === "popularity"){
-    
+    mediaSorted = media.sort((a,b) => a - b);
   }
   if (type === "date") {
-
+    mediaSorted = media.sort((a,b) => a - b);
   }
   if (type === "title"){
-    media.sort((a,b) => a - b);
+    mediaSorted = media.sort();
   }
-  displayMediaData(media,photographer);
+  //save the new order
+  localStorage.setItem("medias",JSON.stringify(mediaSorted));
+  displayMediaData(mediaSorted,photographer);
 }
 
 //lightbox functions
@@ -90,8 +99,8 @@ function openLightbox(index) {
   const media = JSON.parse(localStorage.getItem("medias"))
   const photographer = localStorage.getItem("photographer");
   const mediaLightBox = media[index];
+  //save the index
   localStorage.setItem("currentIndex",index);
-  console.log(localStorage.getItem('currentIndex'));
   // clean the lightbox then display the right media with the right title
   lightbox.innerHTML = "";
   const lbModel = LBFactory(mediaLightBox,photographer);
