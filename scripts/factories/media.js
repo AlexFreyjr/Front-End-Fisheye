@@ -1,6 +1,6 @@
 function mediaFactory(data, name) {
     //catch data
-    const { image, video, likes, title } = data;
+    const { id, image, video, likes, title } = data;
     //structure data for use in html
     const picture = `assets/images/Photos/${name}/${image}`;
     const videoImg = `assets/images/Photos/${name}/${video}`;
@@ -8,6 +8,7 @@ function mediaFactory(data, name) {
     function getMediaCardDOM(index) {
         const article = document.createElement( 'article' );
         article.setAttribute("class","card");
+        article.setAttribute("id",`${id}`);
         //link
         const a = document.createElement('a');
         a.setAttribute("class","lightbox_link");
@@ -42,6 +43,7 @@ function mediaFactory(data, name) {
         const heart = document.createElement('img');
         heart.setAttribute("src","./assets/icons/heart.svg");
         heart.setAttribute("class","heart");
+        heart.setAttribute("onclick",`addLikes(${index})`);
         heart.setAttribute("alt","");
 
         //article structure

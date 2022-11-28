@@ -46,29 +46,32 @@ async function displayPhotographersaData(photographer) {
 //call the factory to display photos of the photographer
 async function displayMediaData(media,photographer) {
   const mediaSection = document.querySelector(".media_section");
-  //let likes = [];
-  let totalLikes = 0; 
   media.forEach((media, index) => {
     const mediaModel = mediaFactory(media,photographer);
     const mediaCardDOM = mediaModel.getMediaCardDOM(index);
     mediaSection.appendChild(mediaCardDOM);
-    //likes.push(media.likes);
-    totalLikes = totalLikes += media.likes;
   });
-  console.log(document.getElementById("totalLikes"));
-  document.getElementById("totalLikes").textContent = totalLikes;
-  //document.querySelector(".likeNbr").textContent = addLike(likes,index);
+  totalLikes();
 }
 
-// function addLike(likes,index){
-//   let result;
-//   document.querySelector(".heart").addEventListener((e) => {
-//     result = likes[index] += 1
-//   });
-//   return(result)
-// }
-
-
+function addLikes(index){
+  const media = JSON.parse(localStorage.getItem("medias"));
+  let result = media[index].likes + 1;
+  const photo = document.getElementById(`${media[index].id}`);
+  media[index].likes = result;
+  localStorage.setItem("medias",JSON.stringify(media));
+  photo.querySelector(".likeNbr").textContent = result;
+  totalLikes();
+  return(media[index].likes);
+}
+//get the like from the object and add the to the total count
+function totalLikes(){
+  const media = JSON.parse(localStorage.getItem("medias"));
+  let totalLikes = 0;
+  media.forEach((media) => {totalLikes = totalLikes += media.likes})
+  //display total count of likes
+  document.getElementById("totalLikes").textContent = totalLikes; 
+}
 //sorting
 function sortBy(type){
   //get the data from the browser
