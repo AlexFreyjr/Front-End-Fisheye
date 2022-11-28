@@ -96,10 +96,12 @@
   position: relative;
   display: inline-block;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .dropdown:hover .submenu {
   display: block;
+  cursor: pointer;
 }
 
 .dropbtn {
