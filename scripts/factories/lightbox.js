@@ -1,5 +1,6 @@
 function LBFactory(data,name) {
   //catch data
+  console.log(data);
   const { image, video, title } = data;
   //structure data for use in html
   const picture = `assets/images/Photos/${name}/${image}`;

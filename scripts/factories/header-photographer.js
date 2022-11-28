@@ -4,8 +4,6 @@ function headerFactory(data) {
     //structure data for use in html
     const picture = `./assets/photographers/${portrait}`;
     const location = `${city}, ${country}`;
-    const fees = `${price}€ . / jour`;
-
     function getheaderCardDOM() {
         //description
         const article = document.createElement('article');
@@ -40,5 +38,5 @@ function headerFactory(data) {
         document.querySelector(".photograph-header").appendChild(img);
         return (article);
     }
-    return { name, picture, location, tagline, fees, getheaderCardDOM }
+    return { name, picture, location, tagline, price, getheaderCardDOM }
 }

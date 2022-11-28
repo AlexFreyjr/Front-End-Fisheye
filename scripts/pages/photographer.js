@@ -8,17 +8,23 @@ async function getData() {
 async function getPhotographersId() {
   const searchParams = new URLSearchParams(window.location.search);
   const photographer_id = searchParams.get("id");
+  let photographer;
   if (photographer_id) {
     //get the media and the specific photographer
     const { media } = await getData();
     const { photographers } = await getData();
-    //filter the JSON and and call the function to display the data 
+    //filter the photographer
     const photographerSorted = photographers.filter ((name) => name.id == photographer_id);
-    localStorage.setItem("photographer",JSON.stringify(photographerSorted));
+    //get their info for the header
     displayPhotographersaData(photographerSorted);
+    //saving just their first name
+    photographer = photographerSorted[0].name;
+    photographer = photographer.split(' ');
+    localStorage.setItem("photographer",photographer[0]);
+    //filtering media by photographers
     const mediaSorted = media.filter((photos) => photos.photographerId == photographer_id);
     localStorage.setItem("medias",JSON.stringify(mediaSorted));
-    displayMediaData(mediaSorted,photographerSorted);                                                                        
+    displayMediaData(mediaSorted,photographer[0]);                                                                        
   } else { 
     alert("Pas de media liés a ce photographe"); 
   }
@@ -33,7 +39,7 @@ async function displayPhotographersaData(photographer) {
     const userCardDOM = headerModel.getheaderCardDOM();
     header.appendChild(userCardDOM);
     fees = photographer.price;
-  });
+  })
   feesHTML.textContent = `${fees}€ / jour`;  
 }
 
@@ -42,17 +48,15 @@ async function displayMediaData(media,photographer) {
   const mediaSection = document.querySelector(".media_section");
   //let likes = [];
   let totalLikes = 0; 
-  photographer = photographer[0].name;
-  photographer = photographer.split(' ');
-  localStorage.setItem("photographer",photographer[0]);
   media.forEach((media, index) => {
-    const mediaModel = mediaFactory(media,photographer[0]);
+    const mediaModel = mediaFactory(media,photographer);
     const mediaCardDOM = mediaModel.getMediaCardDOM(index);
     mediaSection.appendChild(mediaCardDOM);
     //likes.push(media.likes);
     totalLikes = totalLikes += media.likes;
   });
-  document.querySelector(".totalLikes").textContent = totalLikes;
+  console.log(document.getElementById("totalLikes"));
+  document.getElementById("totalLikes").textContent = totalLikes;
   //document.querySelector(".likeNbr").textContent = addLike(likes,index);
 }
 
@@ -67,23 +71,26 @@ async function displayMediaData(media,photographer) {
 
 //sorting
 function sortBy(type){
-  console.log(type);
   //get the data from the browser
   const media = JSON.parse(localStorage.getItem("medias"));
   const photographer = localStorage.getItem("photographer");
   const mediaSection = document.querySelector(".media_section");
   let mediaSorted;
   //wipe all the HTML
-  mediaSection.innerHTML = "";
+  mediaSection.replaceChildren();
   //sort by type
   if (type === "popularity"){
-    mediaSorted = media.sort((a,b) => a - b);
+    //console.log(media);
+    mediaSorted = media.sort((a, b) => 
+    (a.likes < b.likes) ? 1 : (a.likes > b.likes) ? -1 : 0);  
   }
   if (type === "date") {
-    mediaSorted = media.sort((a,b) => a - b);
+    mediaSorted = media.sort((a, b) => 
+    (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0); 
   }
   if (type === "title"){
-    mediaSorted = media.sort();
+    mediaSorted = media.sort((a, b) => 
+    (b.title < a.title) ? 1 : (b.title > a.title) ? -1 : 0); 
   }
   //save the new order
   localStorage.setItem("medias",JSON.stringify(mediaSorted));
@@ -94,6 +101,7 @@ function sortBy(type){
 function openLightbox(index) {
   //open lightbox
   const lightbox = document.querySelector("#lightbox");
+  //console.log(lightbox);
   lightbox.style.display = "block";
   //get the right media with the index given by the display function
   const media = JSON.parse(localStorage.getItem("medias"))
@@ -102,7 +110,7 @@ function openLightbox(index) {
   //save the index
   localStorage.setItem("currentIndex",index);
   // clean the lightbox then display the right media with the right title
-  lightbox.innerHTML = "";
+  lightbox.replaceChildren();
   const lbModel = LBFactory(mediaLightBox,photographer);
   const lbCardDOM = lbModel.getLBCardDOM();
   lightbox.appendChild(lbCardDOM);
