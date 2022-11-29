@@ -14,19 +14,24 @@ async function getPhotographersId() {
     const { media } = await getData();
     const { photographers } = await getData();
     //filter the photographer
-    const photographerSorted = photographers.filter ((name) => name.id == photographer_id);
+    const photographerSorted = photographers.filter(
+      (name) => name.id == photographer_id
+    );
     //get their info for the header
     displayPhotographersaData(photographerSorted);
     //saving just their first name
     photographer = photographerSorted[0].name;
-    photographer = photographer.split(' ');
-    localStorage.setItem("photographer",photographer[0]);
+    photographer = photographer.split(" ");
+    localStorage.setItem("photographer", photographer[0]);
     //filtering media by photographers
-    const mediaSorted = media.filter((photos) => photos.photographerId == photographer_id);
-    localStorage.setItem("medias",JSON.stringify(mediaSorted));
-    displayMediaData(mediaSorted,photographer[0]);                                                                        
-  } else { 
-    alert("Pas de media liés a ce photographe"); 
+    const mediaSorted = media.filter(
+      (photos) => photos.photographerId == photographer_id
+    );
+    localStorage.setItem("medias", JSON.stringify(mediaSorted));
+    displayMediaData(mediaSorted, photographer[0]);
+    sortBy("Popularité");
+  } else {
+    alert("Pas de media liés a ce photographe");
   }
 }
 //call the factory to display the photographer information in the header
@@ -39,41 +44,45 @@ async function displayPhotographersaData(photographer) {
     const userCardDOM = headerModel.getheaderCardDOM();
     header.appendChild(userCardDOM);
     fees = photographer.price;
-  })
-  feesHTML.textContent = `${fees}€ / jour`;  
+  });
+  feesHTML.textContent = `${fees}€ / jour`;
 }
 
 //call the factory to display photos of the photographer
-async function displayMediaData(media,photographer) {
+async function displayMediaData(media, photographer) {
   const mediaSection = document.querySelector(".media_section");
   media.forEach((media, index) => {
-    const mediaModel = mediaFactory(media,photographer);
+    const mediaModel = mediaFactory(media, photographer);
     const mediaCardDOM = mediaModel.getMediaCardDOM(index);
     mediaSection.appendChild(mediaCardDOM);
   });
   totalLikes();
 }
 
-function addLikes(index){
+function addLikes(index) {
   const media = JSON.parse(localStorage.getItem("medias"));
   let result = media[index].likes + 1;
   const photo = document.getElementById(`${media[index].id}`);
   media[index].likes = result;
-  localStorage.setItem("medias",JSON.stringify(media));
+  localStorage.setItem("medias", JSON.stringify(media));
   photo.querySelector(".likeNbr").textContent = result;
   totalLikes();
-  return(media[index].likes);
+  return media[index].likes;
 }
 //get the like from the object and add the to the total count
-function totalLikes(){
+function totalLikes() {
   const media = JSON.parse(localStorage.getItem("medias"));
   let totalLikes = 0;
-  media.forEach((media) => {totalLikes = totalLikes += media.likes})
+  media.forEach((media) => {
+    totalLikes = totalLikes += media.likes;
+  });
   //display total count of likes
-  document.getElementById("totalLikes").textContent = totalLikes; 
+  document.getElementById("totalLikes").textContent = totalLikes;
 }
 //sorting
-function sortBy(type){
+function sortBy(type) {
+  const menuSVG =
+    "<img src='assets/icons/arrow-down.svg' width='18' height='17' alt='' />";
   //get the data from the browser
   const media = JSON.parse(localStorage.getItem("medias"));
   const photographer = localStorage.getItem("photographer");
@@ -82,22 +91,26 @@ function sortBy(type){
   //wipe all the HTML
   mediaSection.replaceChildren();
   //sort by type
-  if (type === "popularity"){
-    //console.log(media);
-    mediaSorted = media.sort((a, b) => 
-    (a.likes < b.likes) ? 1 : (a.likes > b.likes) ? -1 : 0);  
+  if (type === "Popularité") {
+    mediaSorted = media.sort((a, b) =>
+      a.likes < b.likes ? 1 : a.likes > b.likes ? -1 : 0
+    );
   }
-  if (type === "date") {
-    mediaSorted = media.sort((a, b) => 
-    (a.date < b.date) ? 1 : (a.date > b.date) ? -1 : 0); 
+  if (type === "Date") {
+    mediaSorted = media.sort((a, b) =>
+      a.date < b.date ? 1 : a.date > b.date ? -1 : 0
+    );
   }
-  if (type === "title"){
-    mediaSorted = media.sort((a, b) => 
-    (b.title < a.title) ? 1 : (b.title > a.title) ? -1 : 0); 
+  if (type === "Titre") {
+    mediaSorted = media.sort((a, b) =>
+      b.title < a.title ? 1 : b.title > a.title ? -1 : 0
+    );
   }
   //save the new order
-  localStorage.setItem("medias",JSON.stringify(mediaSorted));
-  displayMediaData(mediaSorted,photographer);
+  localStorage.setItem("medias", JSON.stringify(mediaSorted));
+  displayMediaData(mediaSorted, photographer);
+  //display the type of filter
+  document.querySelector(".dropbtn").innerHTML = type + menuSVG;
 }
 
 //lightbox functions
@@ -107,44 +120,44 @@ function openLightbox(index) {
   //console.log(lightbox);
   lightbox.style.display = "block";
   //get the right media with the index given by the display function
-  const media = JSON.parse(localStorage.getItem("medias"))
+  const media = JSON.parse(localStorage.getItem("medias"));
   const photographer = localStorage.getItem("photographer");
   const mediaLightBox = media[index];
   //save the index
-  localStorage.setItem("currentIndex",index);
+  localStorage.setItem("currentIndex", index);
   // clean the lightbox then display the right media with the right title
   lightbox.replaceChildren();
-  const lbModel = LBFactory(mediaLightBox,photographer);
+  const lbModel = LBFactory(mediaLightBox, photographer);
   const lbCardDOM = lbModel.getLBCardDOM();
   lightbox.appendChild(lbCardDOM);
   //Left and Right navigation
-  document.onkeydown = function(e){
-    switch(e.code){
-      case 'ArrowLeft':
+  document.onkeydown = function (e) {
+    switch (e.code) {
+      case "ArrowLeft":
         previous();
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         next();
         break;
     }
-  }
+  };
 }
 //lightbox right arrow
-function next(){
-  let nextPhoto = parseInt(localStorage.getItem('currentIndex')) + 1;
-  localStorage.setItem("currentIndex",nextPhoto);
-  const media = JSON.parse(localStorage.getItem('medias'));
-  if (nextPhoto >= media.length){
+function next() {
+  let nextPhoto = parseInt(localStorage.getItem("currentIndex")) + 1;
+  localStorage.setItem("currentIndex", nextPhoto);
+  const media = JSON.parse(localStorage.getItem("medias"));
+  if (nextPhoto >= media.length) {
     nextPhoto = 0;
   }
   openLightbox(nextPhoto);
 }
 //lightbox left arrow
-function previous(){
-  let previousPhoto = parseInt(localStorage.getItem('currentIndex')) - 1;
-  localStorage.setItem("currentIndex",previousPhoto);
-  const medias = JSON.parse(localStorage.getItem('medias'));
-  if (previousPhoto < 0){
+function previous() {
+  let previousPhoto = parseInt(localStorage.getItem("currentIndex")) - 1;
+  localStorage.setItem("currentIndex", previousPhoto);
+  const medias = JSON.parse(localStorage.getItem("medias"));
+  if (previousPhoto < 0) {
     previousPhoto = medias.length - 1;
   }
   openLightbox(previousPhoto);
@@ -156,4 +169,3 @@ function closeLightbox() {
 }
 
 getPhotographersId();
- 

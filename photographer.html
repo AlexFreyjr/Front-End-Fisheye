@@ -15,20 +15,17 @@
   </header>
   <main id="main">
     <section class="photograph-header"></section>
-    <div id="sorting" aria-label="filter menu" role="filter">
+    <div id="sorting" aria-label="filter-menu" role="filter">
       <div>Trier par</div>
       <div class="dropdown">
-        <button class="dropbtn" role="button" aria-haspopup="listbox" aria-expanded="false">
-          Popularité
-          <svg class="arrow" width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.12 0.453125L8 6.55979L1.88 0.453125L0 2.33312L8 10.3331L16 2.33312L14.12 0.453125Z"
-              fill="white" />
-          </svg>
-        </button>
+        <button class="dropbtn" role="button" aria-haspopup="listbox" aria-expanded="false"></button>
         <div class="submenu" aria-label="submenu">
-          <div class="sorting" onclick="sortBy('popularity')" name="popularity">Popularité</div>
-          <div class="sorting" onclick="sortBy('date')" name="date">Date</div>
-          <div class="sorting" onclick="sortBy('title')" name="title">Titre</div>
+          <div class="sorting" onclick="sortBy('Popularité')" role="listbox" aria-labelledby="submenu"
+            aria-selected="true" aria-activedescendant="true">Popularité
+            <img src="assets/icons/arrow-up.svg" width="18" height="17" alt="" />
+          </div>
+          <div class="sorting" onclick="sortBy('Date')" role="listbox" aria-labelledby="submenu">Date</div>
+          <div class="sorting" onclick="sortBy('Titre')" role="listbox" aria-labelledby="submenu">Titre</div>
         </div>
       </div>
     </div>
