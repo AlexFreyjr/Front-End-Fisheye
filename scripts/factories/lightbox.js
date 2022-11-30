@@ -1,4 +1,4 @@
-function LBFactory(data,name) {
+function LBFactory(data, name) {
   //catch data
   const { image, video, title } = data;
   //structure data for use in html
@@ -7,47 +7,46 @@ function LBFactory(data,name) {
   function getLBCardDOM() {
     let imageOrVideo;
     //container
-    const imgViewer = document.createElement('div');
-    imgViewer.setAttribute("class","img_viewer");
-    imgViewer.setAttribute("aria-labelledby","lightbox");
+    const imgViewer = document.createElement("div");
+    imgViewer.setAttribute("class", "img_viewer");
+    imgViewer.setAttribute("aria-labelledby", "lightbox");
     //left arrow
-    const left = document.createElement('img');
+    const left = document.createElement("img");
     left.setAttribute("class", "viewer_left");
-    left.setAttribute("src","./assets/icons/left.svg");
+    left.setAttribute("src", "./assets/icons/left.svg");
     left.setAttribute("onclick", "previous()");
-    left.setAttribute("alt","");
+    left.setAttribute("alt", "");
     //img container
-    const imgContainer = document.createElement('div');
-    imgContainer.setAttribute("class","img_container");
+    const imgContainer = document.createElement("div");
+    imgContainer.setAttribute("class", "img_container");
 
     if (video) {
       imageOrVideo = document.createElement("video");
-      imageOrVideo.setAttribute("id","lightbox_photo");
+      imageOrVideo.setAttribute("id", "lightbox_photo");
       imageOrVideo.setAttribute("src", videoImg);
       imageOrVideo.setAttribute("alt", " ");
     } else {
       imageOrVideo = document.createElement("img");
-      imageOrVideo.setAttribute("id","lightbox_photo");
+      imageOrVideo.setAttribute("id", "lightbox_photo");
       imageOrVideo.setAttribute("src", picture);
       imageOrVideo.setAttribute("alt", " ");
     }
     //description
-    const imgDescription = document.createElement('div');
+    const imgDescription = document.createElement("div");
     imgDescription.setAttribute("class", "img_description");
     imgDescription.textContent = title;
     //left arrow
-    const right = document.createElement('img');
+    const right = document.createElement("img");
     right.setAttribute("class", "viewer_right");
-    right.setAttribute("src","./assets/icons/right.svg");
+    right.setAttribute("src", "./assets/icons/right.svg");
     right.setAttribute("onclick", "next()");
-    right.setAttribute("alt","");
+    right.setAttribute("alt", "");
     //close
-    const close = document.createElement('img');
+    const close = document.createElement("img");
     close.setAttribute("class", "close");
-    close.setAttribute("src","./assets/icons/close.svg");
-    close.setAttribute("onclick","closeLightbox()");
-    close.setAttribute("alt","");
-
+    close.setAttribute("src", "./assets/icons/close.svg");
+    close.setAttribute("onclick", "closeLightbox()");
+    close.setAttribute("alt", "");
 
     //LB structure
     imgViewer.appendChild(left);

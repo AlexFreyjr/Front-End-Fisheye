@@ -1,3 +1,7 @@
+//import mediaFactory from "../factories/media.js";
+//import LBFactory from "../factories/lightbox.js";
+//import headerFactory from "../factories/header-photographer.js";
+
 //Get data from JSON
 async function getData() {
   return await fetch("./data/photographers.json").then((response) =>
@@ -59,16 +63,18 @@ async function displayMediaData(media, photographer) {
   totalLikes();
 }
 
+//add a limitations to one like only, then decremnt like
 function addLikes(index) {
   const media = JSON.parse(localStorage.getItem("medias"));
-  let result = media[index].likes + 1;
   const photo = document.getElementById(`${media[index].id}`);
+  let result = media[index].likes + 1;
   media[index].likes = result;
   localStorage.setItem("medias", JSON.stringify(media));
   photo.querySelector(".likeNbr").textContent = result;
   totalLikes();
   return media[index].likes;
 }
+
 //get the like from the object and add the to the total count
 function totalLikes() {
   const media = JSON.parse(localStorage.getItem("medias"));
@@ -131,7 +137,10 @@ function openLightbox(index) {
   const lbCardDOM = lbModel.getLBCardDOM();
   lightbox.appendChild(lbCardDOM);
   //Left and Right navigation
-  document.onkeydown = function (e) {
+}
+
+document.onkeydown = function (e) {
+  if (lightbox.style.display === "block") {
     switch (e.code) {
       case "ArrowLeft":
         previous();
@@ -139,9 +148,14 @@ function openLightbox(index) {
       case "ArrowRight":
         next();
         break;
+      // add escape
+      case "Escape":
+        closeLightbox();
+        break;
     }
-  };
-}
+  }
+};
+
 //lightbox right arrow
 function next() {
   let nextPhoto = parseInt(localStorage.getItem("currentIndex")) + 1;
