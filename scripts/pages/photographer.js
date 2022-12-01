@@ -63,11 +63,21 @@ async function displayMediaData(media, photographer) {
   totalLikes();
 }
 
-//add a limitations to one like only, then decremnt like
 function addLikes(index) {
+  //getting the list of media
   const media = JSON.parse(localStorage.getItem("medias"));
+  //get the untouched list of media
+  const mediaBase = JSON.parse(localStorage.getItem("mediasBase"));
+  //get the right photo by getting the id
   const photo = document.getElementById(`${media[index].id}`);
   let result = media[index].likes + 1;
+  //block adding more than one like
+  console.log(media[index].likes);
+  console.log(mediaBase[index].likes);
+  if (result > mediaBase[index].likes + 1) {
+    result = media[index].likes - 1;
+  }
+  //replace the number of like by the result
   media[index].likes = result;
   localStorage.setItem("medias", JSON.stringify(media));
   photo.querySelector(".likeNbr").textContent = result;
@@ -85,6 +95,7 @@ function totalLikes() {
   //display total count of likes
   document.getElementById("totalLikes").textContent = totalLikes;
 }
+
 //sorting
 function sortBy(type) {
   const menuSVG =
@@ -114,6 +125,7 @@ function sortBy(type) {
   }
   //save the new order
   localStorage.setItem("medias", JSON.stringify(mediaSorted));
+  localStorage.setItem("mediasBase", JSON.stringify(mediaSorted));
   displayMediaData(mediaSorted, photographer);
   //display the type of filter
   document.querySelector(".dropbtn").innerHTML = type + menuSVG;
@@ -123,7 +135,6 @@ function sortBy(type) {
 function openLightbox(index) {
   //open lightbox
   const lightbox = document.querySelector("#lightbox");
-  //console.log(lightbox);
   lightbox.style.display = "block";
   //get the right media with the index given by the display function
   const media = JSON.parse(localStorage.getItem("medias"));
