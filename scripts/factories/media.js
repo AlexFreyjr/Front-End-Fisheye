@@ -1,10 +1,10 @@
 /* eslint-disable-next-line */
-function mediaFactory(data, name) {
+function mediaFactory(data) {
   // catch data
   const { id, image, video, likes, title } = data
   // structure data for use in html
-  const picture = `assets/images/Photos/${name}/${image}`
-  const videoImg = `assets/images/Photos/${name}/${video}`
+  const picture = `assets/images/Photos/${image}`
+  const videoImg = `assets/images/Photos/${video}`
 
   function getMediaCardDOM (index) {
     const article = document.createElement('article')

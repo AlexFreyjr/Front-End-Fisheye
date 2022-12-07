@@ -15,7 +15,7 @@ async function getPhotographersId () {
     const { photographers } = await getData()
     // filter the photographer
     const photographerSorted = photographers.find(
-      (a) => a.id === photographerId
+      (a) => parseInt(a.id) === parseInt(photographerId)
     )
     // get their info for the header
     displayPhotographersaData(photographerSorted)
@@ -25,7 +25,7 @@ async function getPhotographersId () {
     localStorage.setItem('photographer', photographer)
     // filtering media by photographers
     const mediaSorted = media.filter(
-      (photos) => photos.photographerId === photographerId
+      (photos) => parseInt(photos.photographerId) === parseInt(photographerId)
     )
     localStorage.setItem('medias', JSON.stringify(mediaSorted))
     displayMediaData(mediaSorted, photographer)
@@ -38,14 +38,11 @@ async function getPhotographersId () {
 async function displayPhotographersaData (photographer) {
   const header = document.querySelector('.photograph-header')
   const feesHTML = document.querySelector('.right')
-  let fees
-  photographer.forEach((photographer) => {
-    /* eslint-disable-next-line */
-    const headerModel = headerFactory(photographer)
-    const userCardDOM = headerModel.getheaderCardDOM()
-    header.appendChild(userCardDOM)
-    fees = photographer.price
-  })
+  /* eslint-disable-next-line */
+  const headerModel = headerFactory(photographer)
+  const userCardDOM = headerModel.getheaderCardDOM()
+  header.appendChild(userCardDOM)
+  const fees = photographer.price
   feesHTML.textContent = `${fees}€ / jour`
 }
 
@@ -54,7 +51,7 @@ async function displayMediaData (media, photographer) {
   const mediaSection = document.querySelector('.media_section')
   media.forEach((media, index) => {
     /* eslint-disable-next-line */
-    const mediaModel = mediaFactory(media, photographer)
+    const mediaModel = mediaFactory(media)
     const mediaCardDOM = mediaModel.getMediaCardDOM(index)
     mediaSection.appendChild(mediaCardDOM)
   })

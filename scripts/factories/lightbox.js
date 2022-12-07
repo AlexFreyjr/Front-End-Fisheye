@@ -3,8 +3,8 @@ function LBFactory(data, name) {
   // catch data
   const { image, video, title } = data
   // structure data for use in html
-  const picture = `assets/images/Photos/${name}/${image}`
-  const videoImg = `assets/images/Photos/${name}/${video}`
+  const picture = `assets/images/Photos/${image}`
+  const videoImg = `assets/images/Photos/${video}`
   function getLBCardDOM () {
     let imageOrVideo
     // container
