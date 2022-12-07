@@ -123,6 +123,7 @@ function sortBy (type) {
   localStorage.setItem('mediasBase', JSON.stringify(mediaSorted))
   displayMediaData(mediaSorted, photographer)
   // display the type of filter
+  document.querySelector('.dropdown').classList.remove('active')
   document.querySelector('.dropbtn').innerHTML = type + menuSVG
 }
 
@@ -189,5 +190,14 @@ function closeLightbox () {
   const lightbox = document.querySelector('#lightbox')
   lightbox.style.display = 'none'
 }
-
+/* eslint-disable-next-line */
+function dropdown() {
+  const dropdown = document.querySelector('.dropdown')
+  dropdown.classList.toggle('active')
+  if (dropdown.className === 'dropdown active') {
+    document.querySelector('.dropbtn').setAttribute('aria-expanded', 'true')
+  } else {
+    document.querySelector('.dropbtn').setAttribute('aria-expanded', 'false')
+  }
+}
 getPhotographersId()
