@@ -67,8 +67,6 @@ function addLikes(index) {
   const photo = document.getElementById(`${media[index].id}`)
   let result = media[index].likes + 1
   // block adding more than one like
-  console.log(media[index].likes)
-  console.log(mediaBase[index].likes)
   if (result > mediaBase[index].likes + 1) {
     result = media[index].likes - 1
   }
