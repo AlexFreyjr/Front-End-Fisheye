@@ -132,6 +132,7 @@
   background-color: #901c1c;
   min-width: 170px;
   z-index: 1;
+  tabindex: 1;
   top: 0;
   border-radius: 5px;
 }
