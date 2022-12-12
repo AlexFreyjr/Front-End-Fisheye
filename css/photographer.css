@@ -132,9 +132,11 @@
   background-color: #901c1c;
   min-width: 170px;
   z-index: 1;
-  tabindex: 1;
+  list-style: none;
   top: 0;
   border-radius: 5px;
+  margin: 0;
+  padding: 0;
 }
 
 .submenu .sorting {
@@ -146,7 +148,7 @@
   border-bottom: 1px solid white;
 }
 
-.submenu .sorting:last-child {
+.submenu .last {
   border-bottom: none;
 }
 

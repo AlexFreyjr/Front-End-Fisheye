@@ -20,13 +20,13 @@
       <div class="dropdown">
         <button class="dropbtn" role="button" aria-haspopup="listbox" aria-expanded="false"
           onclick="dropdown()"></button>
-        <div class="submenu" aria-label="submenu" role="listbox" aria-activedescendant="pop" tabindex="0">
-          <div class="sorting" id="pop" onclick="sortBy('Popularité')" role="option" aria-selected="true">Popularité
-            <img src="assets/icons/arrow-up.svg" width="18" height="17" alt="" />
-          </div>
-          <div class="sorting" onclick="sortBy('Date')" role="option">Date</div>
-          <div class="sorting" onclick="sortBy('Titre')" role="option">Titre</div>
-        </div>
+        <ul class="submenu" aria-label="submenu" role="listbox" aria-activedescendant="pop">
+          <li><a href="#" class="sorting" id="pop" onclick="sortBy('Popularité')" role="option" aria-selected="true">Popularité
+            <img src="assets/icons/arrow-up.svg" width="18" height="17" alt="submenu open" />
+          </a></li>
+          <li><a href ="#" class="sorting" onclick="sortBy('Date')" role="option">Date</a></li>
+          <li><a href="#" class="sorting last" onclick="sortBy('Titre')" role="option">Titre</a></li>
+        </ul>
       </div>
     </div>
     <section class="media_section"></section>
@@ -35,7 +35,7 @@
       <div class="inner">
         <div class="left">
           <div id="totalLikes"></div>
-          <svg role="img" alt="" width="18" height="17" viewBox="0 0 18 19" fill="none"
+          <svg role="img" width="18" height="17" viewBox="0 0 18 19" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
               d="M9.125 18.35L7.85625 17.03C3.35 12.36 0.375 9.28 0.375 5.5C0.375 2.42 2.4925 0 5.1875 0C6.71 0 8.17125 0.81 9.125 2.09C10.0787 0.81 11.54 0 13.0625 0C15.7575 0 17.875 2.42 17.875 5.5C17.875 9.28 14.9 12.36 10.3938 17.04L9.125 18.35Z"
@@ -53,15 +53,15 @@
         <img src="assets/icons/close.svg" onclick="closeModal()" alt="close" />
       </header>
       <form class="form">
-        <div aria-labelledby="form" role="form">
-          <label for="Prenom">Prénom</label>
-          <input id="first" type="text" name="Prenom" id="Prenom" />
+        <div aria-label="form" role="form">
+          <label for="prenom">Prénom</label>
+          <input type="text" name="Prenom" id="prenom" />
           <label for="nom">Nom</label>
-          <input id="name" type="text" name="nom" id="nom" />
+          <input type="text" name="Nom" id="nom" />
           <label for="email">E-mail</label>
-          <input id="mail" type="email" name="email" id="email" />
+          <input type="email" name="Email" id="email" />
           <label for="message">Votre message</label>
-          <textarea id="message" name="message" rows="20" cols="61"></textarea>
+          <textarea id="message" name="Message" rows="20" cols="61"></textarea>
         </div>
         <button class="contact_button" type="submit" onclick="validate()">Envoyer</button>
       </form>
