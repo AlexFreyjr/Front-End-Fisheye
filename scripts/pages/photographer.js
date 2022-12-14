@@ -181,14 +181,38 @@ document.onkeydown = function (e) {
   if (modal.style.display === 'block') {
     if (e.code === 'Escape') {
       /* eslint-disable-next-line */
-          closeModal()
+        closeModal()
     }
   }
   document.querySelector('.closeModal').addEventListener('keydown', (e) => {
     if (modal.style.display === 'block') {
       if (e.code === 'Enter') {
         /* eslint-disable-next-line */
-                  closeModal()
+        closeModal()
+      }
+    }
+  })
+  document.querySelector('.viewer_left').addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'block') {
+      if (e.code === 'Enter') {
+        /* eslint-disable-next-line */
+        previous()
+      }
+    }
+  })
+  document.querySelector('.viewer_right').addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'block') {
+      if (e.code === 'Enter') {
+        /* eslint-disable-next-line */
+        next()
+      }
+    }
+  })
+  document.querySelector('.close').addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'block') {
+      if (e.code === 'Enter') {
+        /* eslint-disable-next-line */
+        closeLightbox()
       }
     }
   })
