@@ -35,16 +35,19 @@ function mediaFactory(data) {
     // like
     const divLike = document.createElement('div')
     divLike.setAttribute('class', 'like')
+    divLike.setAttribute('tabindex', '0')
     // like number
     const divLikeNbr = document.createElement('div')
     divLikeNbr.setAttribute('class', 'likeNbr')
     divLikeNbr.textContent = likes
+    divLikeNbr.setAttribute('tabindex', '0')
     // heart
     const heart = document.createElement('img')
     heart.setAttribute('src', './assets/icons/heart.svg')
     heart.setAttribute('class', 'heart')
     heart.setAttribute('onclick', `addLikes(${index})`)
-    heart.setAttribute('alt', '')
+    heart.setAttribute('alt', 'like')
+    heart.setAttribute('tabindex', '0')
 
     // article structure
     article.appendChild(a)

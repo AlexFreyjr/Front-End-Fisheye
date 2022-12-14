@@ -147,6 +147,8 @@ function openLightbox (index) {
 
 document.onkeydown = function (e) {
   const lightbox = document.querySelector('#lightbox')
+  const likeFocus = document.querySelectorAll('.heart')
+  const formModal = document.querySelector('#contact_modal')
   if (lightbox.style.display === 'block') {
     switch (e.code) {
       case 'ArrowLeft':
@@ -159,6 +161,25 @@ document.onkeydown = function (e) {
       case 'Escape':
         closeLightbox()
         break
+    }
+  }
+  likeFocus.forEach((el) => {
+    // if the element is focused
+    if (el === document.activeElement) {
+      // get the index of the photo from the onclick event
+      let index = document.activeElement.getAttribute('onclick')
+      // get rid of the text and get only the number
+      index = parseInt(index.replace(/[^\d.]/g, ''))
+      switch (e.code) {
+        case 'Enter':
+          addLikes(index)
+      }
+    }
+  })
+  if (formModal.style.display === 'block') {
+    if (e.code === 'Escape') {
+      /* eslint-disable-next-line */
+      closeModal()
     }
   }
 }
