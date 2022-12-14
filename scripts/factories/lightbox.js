@@ -11,13 +11,13 @@ function LBFactory(data, name) {
     const imgViewer = document.createElement('div')
     imgViewer.setAttribute('class', 'img_viewer')
     imgViewer.setAttribute('aria-selected', 'true')
-    imgViewer.focus()
+
     // left arrow
     const left = document.createElement('img')
     left.setAttribute('class', 'viewer_left')
     left.setAttribute('src', './assets/icons/left.svg')
     left.setAttribute('onclick', 'previous()')
-    left.setAttribute('alt', '')
+    left.setAttribute('alt', 'Photo precedente')
     left.setAttribute('tabindex', '0')
     // img container
     const imgContainer = document.createElement('div')
@@ -50,7 +50,7 @@ function LBFactory(data, name) {
     close.setAttribute('class', 'close')
     close.setAttribute('src', './assets/icons/close.svg')
     close.setAttribute('onclick', 'closeLightbox()')
-    close.setAttribute('alt', '')
+    close.setAttribute('alt', 'Photo suivante')
     close.setAttribute('tabindex', '0')
 
     // LB structure
