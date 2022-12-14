@@ -10,15 +10,15 @@ function LBFactory(data, name) {
     // container
     const imgViewer = document.createElement('div')
     imgViewer.setAttribute('class', 'img_viewer')
-    imgViewer.setAttribute('aria-selected', 'true')
-    imgViewer.focus()
+    // imgViewer.setAttribute('aria-selected', 'true')
+    // imgViewer.focus()
     // left arrow
     const left = document.createElement('img')
     left.setAttribute('class', 'viewer_left')
     left.setAttribute('src', './assets/icons/left.svg')
     left.setAttribute('onclick', 'previous()')
     left.setAttribute('alt', '')
-    left.setAttribute('tabindex', '0')
+    // left.setAttribute('tabindex', '0')
     // img container
     const imgContainer = document.createElement('div')
     imgContainer.setAttribute('class', 'img_container')
@@ -44,14 +44,14 @@ function LBFactory(data, name) {
     right.setAttribute('src', './assets/icons/right.svg')
     right.setAttribute('onclick', 'next()')
     right.setAttribute('alt', '')
-    right.setAttribute('tabindex', '0')
+    // right.setAttribute('tabindex', '0')
     // close
     const close = document.createElement('img')
     close.setAttribute('class', 'close')
     close.setAttribute('src', './assets/icons/close.svg')
     close.setAttribute('onclick', 'closeLightbox()')
     close.setAttribute('alt', '')
-    close.setAttribute('tabindex', '0')
+    // close.setAttribute('tabindex', '0')
 
     // LB structure
     imgViewer.appendChild(left)

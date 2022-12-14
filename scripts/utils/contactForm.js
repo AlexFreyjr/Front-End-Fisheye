@@ -49,15 +49,11 @@ document.onkeydown = function (e) {
     }
   }
 }
-console.log(modal.getElementsByClassName('closeModal'))
-
-if (document.activeElement === document.querySelector('.closeModal')) {
-  document.onkeydown = function (e) {
-    if (modal.style.display === 'block') {
-      if (e.code === 'Escape') {
-        /* eslint-disable-next-line */
+document.querySelector('.closeModal').addEventListener('keydown', (e) => {
+  if (modal.style.display === 'block') {
+    if (e.code === 'Enter') {
+      /* eslint-disable-next-line */
                 closeModal()
-      }
     }
   }
-}
+})

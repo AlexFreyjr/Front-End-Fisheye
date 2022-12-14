@@ -146,6 +146,7 @@ function openLightbox (index) {
 }
 
 document.onkeydown = function (e) {
+  console.log(e)
   const lightbox = document.querySelector('#lightbox')
   const likeFocus = document.querySelectorAll('.heart')
   if (lightbox.style.display === 'block') {
