@@ -131,6 +131,7 @@ function openLightbox (index) {
   const lightbox = document.querySelector('#lightbox')
   lightbox.style.display = 'block'
   lightbox.setAttribute('aria-hidden', 'false')
+  lightbox.focus()
   // get the right media with the index given by the display function
   const media = JSON.parse(localStorage.getItem('medias'))
   const photographer = localStorage.getItem('photographer')
@@ -143,10 +144,11 @@ function openLightbox (index) {
   const lbModel = LBFactory(mediaLightBox, photographer)
   const lbCardDOM = lbModel.getLBCardDOM()
   lightbox.appendChild(lbCardDOM)
+  // Left and Right navigation
 }
 
 document.onkeydown = function (e) {
-  console.log(e)
+  const modal = document.getElementById('contact_modal')
   const lightbox = document.querySelector('#lightbox')
   const likeFocus = document.querySelectorAll('.heart')
   if (lightbox.style.display === 'block') {
@@ -173,6 +175,20 @@ document.onkeydown = function (e) {
       switch (e.code) {
         case 'Enter':
           addLikes(index)
+      }
+    }
+  })
+  if (modal.style.display === 'block') {
+    if (e.code === 'Escape') {
+      /* eslint-disable-next-line */
+          closeModal()
+    }
+  }
+  document.querySelector('.closeModal').addEventListener('keydown', (e) => {
+    if (modal.style.display === 'block') {
+      if (e.code === 'Enter') {
+        /* eslint-disable-next-line */
+                  closeModal()
       }
     }
   })

@@ -40,20 +40,3 @@ modal.addEventListener('submit', (e) => {
   e.preventDefault()
   closeModal()
 })
-
-document.onkeydown = function (e) {
-  if (modal.style.display === 'block') {
-    if (e.code === 'Escape') {
-      /* eslint-disable-next-line */
-          closeModal()
-    }
-  }
-}
-document.querySelector('.closeModal').addEventListener('keydown', (e) => {
-  if (modal.style.display === 'block') {
-    if (e.code === 'Enter') {
-      /* eslint-disable-next-line */
-                closeModal()
-    }
-  }
-})
