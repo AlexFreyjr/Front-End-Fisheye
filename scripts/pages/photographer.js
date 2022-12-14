@@ -130,6 +130,7 @@ function openLightbox (index) {
   // open lightbox
   const lightbox = document.querySelector('#lightbox')
   lightbox.style.display = 'block'
+  lightbox.setAttribute('aria-hidden', 'false')
   // get the right media with the index given by the display function
   const media = JSON.parse(localStorage.getItem('medias'))
   const photographer = localStorage.getItem('photographer')
@@ -142,13 +143,11 @@ function openLightbox (index) {
   const lbModel = LBFactory(mediaLightBox, photographer)
   const lbCardDOM = lbModel.getLBCardDOM()
   lightbox.appendChild(lbCardDOM)
-  // Left and Right navigation
 }
 
 document.onkeydown = function (e) {
   const lightbox = document.querySelector('#lightbox')
   const likeFocus = document.querySelectorAll('.heart')
-  const formModal = document.querySelector('#contact_modal')
   if (lightbox.style.display === 'block') {
     switch (e.code) {
       case 'ArrowLeft':
@@ -176,12 +175,6 @@ document.onkeydown = function (e) {
       }
     }
   })
-  if (formModal.style.display === 'block') {
-    if (e.code === 'Escape') {
-      /* eslint-disable-next-line */
-      closeModal()
-    }
-  }
 }
 
 // lightbox right arrow
@@ -208,6 +201,7 @@ function previous () {
 function closeLightbox () {
   const lightbox = document.querySelector('#lightbox')
   lightbox.style.display = 'none'
+  lightbox.setAttribute('aria-hidden', 'true')
 }
 /* eslint-disable-next-line */
 function dropdown() {

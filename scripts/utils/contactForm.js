@@ -11,9 +11,12 @@ let messageLog
 /* eslint-disable-next-line */
 function displayModal () {
   modal.style.display = 'block'
+  modal.setAttribute('aria-hidden', 'false')
+  modal.focus()
 }
 function closeModal () {
   modal.style.display = 'none'
+  modal.setAttribute('aria-hidden', 'true')
 }
 
 fNameForm.addEventListener('change', (e) => {
@@ -37,3 +40,24 @@ modal.addEventListener('submit', (e) => {
   e.preventDefault()
   closeModal()
 })
+
+document.onkeydown = function (e) {
+  if (modal.style.display === 'block') {
+    if (e.code === 'Escape') {
+      /* eslint-disable-next-line */
+          closeModal()
+    }
+  }
+}
+console.log(modal.getElementsByClassName('closeModal'))
+
+if (document.activeElement === document.querySelector('.closeModal')) {
+  document.onkeydown = function (e) {
+    if (modal.style.display === 'block') {
+      if (e.code === 'Escape') {
+        /* eslint-disable-next-line */
+                closeModal()
+      }
+    }
+  }
+}

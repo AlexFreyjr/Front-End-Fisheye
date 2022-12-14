@@ -31,7 +31,7 @@
       </div>
     </div>
     <section class="media_section"></section>
-    <article id="lightbox"></article>
+    <article id="lightbox" aria-labelledby="img_viewer" role="dialog" aria-hidden="true" tabindex="-1"></article>
     <article class="fees-fixed">
       <div class="inner">
         <div class="left">
@@ -46,11 +46,11 @@
       </div>
     </article>
   </main>
-  <div id="contact_modal" aria-labelledby="contactForm" role="dialog">
+  <div id="contact_modal" aria-labelledby="contactForm" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" alt="close" tabindex="0" />
+        <img src=" assets/icons/close.svg" class="closeModal" onclick="closeModal()" alt="close" tabindex="0" />
       </header>
       <form class="form" aria-hidden="true">
         <div role="document">
