@@ -1,12 +1,12 @@
-## Project FishEye
+# Project FishEye
 
-#Introduction 
+## Introduction 
 
 Project n°6 on my Front-end Dev curiculum with OpenClassrooms
 
 This project goal was to learn to make a dynamic photo and accessible website with JSON
 
-#Prompt of the project
+## Prompt of the project
 
 A photobook website for independant photographers.
 
